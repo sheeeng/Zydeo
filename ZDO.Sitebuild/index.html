@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="description" content="Search the HanDeDict open-source Chinese-German dictionary online."/>
+  <meta name="viewport" content="user-scalable=0"/>
+  <title>HanDeDict Chinese-German dictionary</title>
+  <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic&subset=latin,latin-ext' rel='stylesheet'
+        type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu:700&subset=latin,latin-ext' rel='stylesheet'
+        type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Neuton&subset=latin,latin-ext' rel='stylesheet' type='text/css'>  <link rel="stylesheet" href="static/tooltipster.css">
+  <link rel="stylesheet" href="static/style-v1.3.css">
+</head>
+<body>
+<nav id="menu">
+  <div id="menu-horiz">
+    <ul>
+      <li class="active"><a href="/">Search</a></li>
+      <li><a href="/about">About</a></li>
+      <li class="imprint"><a ref="https://zydeo.net/imprint">Imprint</a></li>
+    </ul>
+    <div id="langsel">
+      <div id="langsel-inner">
+        <a class="active" id="langselDe" href="?ui=de">DE</a> <a id="langselEn" href="?ui=en">EN</a> <a class="zho" id="langselJian" href="?ui=jian">简体中文</a> <a class="zho" id="langselFan" href="?ui=fan">繁体中文</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<div id="content" class="hei">
+  <div id="content-core">
+    <!--
+    <div id="page-header">
+      <div id="cell-menu">
+        <span id="btn-menu"><img id="img-menu" src="static/hamburger.svg" alt="Menu"/></span>
+      </div>
+      <h1>About HanDeDict @ Zydeo</h1>
+    </div>
+    <div id="staticContent">
+      <h2>What is HanDeDict?</h2>
+      <p>This and that. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <h2>What is Zydeo?</h2>
+      <p>This and that. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    -->
+
+
+    <div id="search-bar">
+      <table id="search-panel">
+        <tr>
+          <td id="cell-menu">
+            <span id="btn-menu"><img id="img-menu" src="static/hamburger.svg" alt="Menu"/></span>
+          </td>
+          <td id="cell-input">
+            <input type="text" name="txt-search" id="txtSearch" placeholder="Hanzi, Pinyin or German word" maxlength="64"/>
+          </td>
+          <td id="cell-clear">
+            <span id="btn-clear"><img id="img-clear" src="static/clear.svg" alt="Clear text"/></span>
+          </td>
+          <td id="cell-write">
+            <span id="btn-write"><img id="img-write" src="static/brush.svg" alt="Show handwriting input"/></span>
+          </td>
+          <td id="cell-search">
+            <span id="btn-search"><img id="img-search" src="static/search.svg" alt="Look up in dictionary"/></span>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="stroke-input">
+      <div id="stroke-inner">
+        <div id="strokeDataLoading">Loading...</div>
+        <canvas id="stroke-input-canvas"></canvas>
+        <div id="stroke-commands">
+          <div id="strokeClear">Clear</div>
+          <div id="strokeUndo">Undo</div>
+        </div>
+        <div id="suggestions"></div>
+      </div>
+    </div>
+    <div id="results">
+
+      <!--
+      <div id="welcomeScreen">
+        <h1>No results</h1>
+        <img id="img-welcome" src="static/zydeo-owl-sad.svg" alt="No results"/>
+        <p>
+          We're sorry. The word you are looking for doesn't seem to be in HanDeDict.
+        </p>
+      </div>
+      -->
+
+      <!--
+      <div id="welcomeScreen">
+        <h1>HanDeDict @ Zydeo</h1>
+        <img id="img-welcome" src="static/zydeo-owl.svg" alt="Welcome"/>
+        <p>
+          Enter German word, Pinyin or Hanzi to search the dictionary.
+        </p><p>
+        Pinyin syllables can include tone mark, but don't need to:<br/>
+        <i>zhongwen</i> and <i>zhong1wen2</i> both work.
+      </p><p>
+        You can separate Pinyin syllables with spaces, but you don't need to:<br/>
+        <i>zhongwen</i> and <i>zhong wen</i> both work. So do <i>xi an</i> and <i>xi'an</i>.
+      </p><p>
+        Click on the brush icon for handwriting recognition.
+      </p>
+      </div>
+      -->
+
+      <div id="resultsHolder">
+        <div id="topNotice">
+          <p class="tnTitle">Annotation mode</p>
+          <p class="tnMessage">
+            The text you submitted is not a word in HanDeDict, but Zydeo did find parts of it in the dictionary.
+            Instead of normal lookup results, you can find an annotated version of your text below.
+          </p>
+        </div>
+        <div class="entry">
+          <span class="hw-simp"><span class="hanim">狗</span>窦狗窦狗窦狗窦狗窦狗窦狗窦狗</span>
+          <br/>
+          <span class="hw-trad"><span class="hanim">狗</span>窦狗窦狗窦狗窦狗窦狗窦狗窦狗</span>
+          <span class="hw-pinyin">gǒu dòu</span>
+
+          <div class="senses">
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">1</span> dog</span> <span
+              class="sense-hl">hole</span></span>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">2</span> <span class="sense-hl-start">gap</span></span><span class="sense-hl-end"> caused</span> by missing teeth</span>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">3</span> <span
+              class="sense-meta">(fig.)</span></span> den of thieves</span>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">4</span> <span
+              class="sense-hl">dog hole</span></span></span>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">5</span> gap</span> caused by missing teeth</span>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">6</span> <span
+              class="sense-meta">(fig.)</span></span> <span class="sense-hl">den of thieves</span></span><br/>
+            <span class="sense"><span class="sense-meta">Classifier: </span>个 • 個 [gè], 位 • 位 [wèi]</span><br/>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">7</span> dog</span> hole</span>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">8</span> gap</span> caused by missing teeth</span>
+          </div>
+        </div>
+
+        <div class="entry toneColorsPleco">
+          <span class="hw-simp"><span class="tone3 hanim">举</span><span class="tone4 hanim">办</span></span>
+          <span class="hw-sep faint">&bull;</span>
+          <span class="hw-trad"><span class="tone3 hanim">舉</span><span class="tone4 hanim">辦</span></span>
+          <span class="hw-pinyin">jǔ bàn</span>
+
+          <div class="senses">
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">1</span> rendez</span> <span
+              class="sense-meta">(eseményt, rendezvényt)</span></span>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">2</span> szervez</span></span>
+          </div>
+        </div>
+
+        <div class="entry toneColorsPleco">
+          <span class="hw-simp"><span class="tone3 hanim">夫</span><span class="tone4 hanim">妇</span></span>
+          <span class="hw-sep faint">&bull;</span>
+          <span class="hw-trad"><span class="tone3 hanim">夫</span><span class="tone4 hanim">婦</span></span>
+          <span class="hw-pinyin">fū fù</span>
+
+          <div class="senses">
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">1</span> házaspár</span></span>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">2</span> férj és feleség</span></span>
+            <br/>
+            <span class="sense"><i>Számlálószó:</i> 对&bull;對 [duì]</span>
+          </div>
+        </div>
+
+        <div class="entry toneColorsPleco">
+          <span class="hw-simp"><span class="tone3 hanim">狗</span><span class="tone4 hanim">窦</span><span class="tone3 hanim">狗</span><span class="tone4 hanim">窦</span><span class="tone3 hanim">狗</span><span class="tone4 hanim">窦</span></span>
+          <span class="hw-sep faint">&bull;</span>
+          <span class="hw-trad"><span class="tone3 faint hanim">狗</span><span class="tone4 hanim">竇</span><span class="tone3 faint hanim">狗</span><span class="tone4 hanim">竇</span><span class="tone3 faint hanim">狗</span><span class="tone4 hanim">竇</span></span>
+          <span class="hw-pinyin">gǒu dòu</span>
+
+          <div class="senses">
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">1</span> dog</span> <span
+              class="sense-hl">hole</span></span>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">2</span> gap</span> caused <span
+              class="sense-hl">by missing</span> teeth</span>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">3</span> <span
+              class="sense-meta">(fig.)</span></span> den of thieves</span>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">4</span> <span
+              class="sense-hl">dog hole</span></span></span>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">5</span> gap</span> caused by missing teeth</span>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">6</span> <span
+              class="sense-meta">(fig.)</span></span> den of thieves</span><br/>
+            <span class="sense"><span class="sense-meta">Classifier: </span>个 • 個 [gè], 位 • 位 [wèi]</span><br/>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">7</span> dog</span> hole</span>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">8</span> gap</span> caused by missing teeth</span>
+          </div>
+        </div>
+
+        <div class="entry  toneColorsDummitt">
+          <span class="hw-simp"><span class="tone3 hanim">狗</span><span class="tone4 hanim">窦</span></span>
+          <span class="hw-sep faint">&bull;</span>
+          <span class="hw-trad"><span class="tone3 faint hanim">狗</span><span class="tone4 hanim">竇</span></span>
+          <span class="hw-pinyin">gǒu dòu</span>
+
+          <div class="senses">
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">1</span> dog</span> <span
+              class="sense-hl">hole</span></span>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">2</span> gap</span> caused <span
+              class="sense-hl">by missing</span> teeth</span>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">3</span> <span
+              class="sense-meta">(fig.)</span></span> den of thieves</span>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">4</span> <span
+              class="sense-hl">dog hole</span></span></span>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">5</span> gap</span> caused by missing teeth</span>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">6</span> <span
+              class="sense-meta">(fig.)</span></span> den of thieves</span><br/>
+            <span class="sense"><span class="sense-meta">Classifier: </span>个 • 個 [gè], 位 • 位 [wèi]</span><br/>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">7</span> dog</span> hole</span>
+            <span class="sense"><span class="sense-nobr"><span class="sense-ix">8</span> gap</span> caused by missing teeth</span>
+          </div>
+        </div>
+
+        <div id="soaBox" class="soaBoxLeft">
+          <div id="soaBoxTail">&nbsp;</div>
+          <div id="soaHead">
+            <div id="soaTitle">Stroke order</div>
+            <div id="soaClose">X</div>
+          </div>
+          <div id="soaGraphics">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewbox='0 0 1024 1024' id="strokeAnimSVG"></svg>
+            <div id="soaError"><div id="soaErrorContent"></div></div>
+          </div>
+          <div id="soaFooter">
+            Animation by <a href="https://github.com/skishore/makemeahanzi" target="_blank">makemeahanzi</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div id="footer">
+  <div id="footer-inside">
+    <span>HanDeDict @ Zydeo v1.0 &bull; ©2015 Gábor L Ugray &bull; <a id="linkFooterImprint" href="http://zydeo.net/imprint">Imprint</a></span>
+  </div>
+  <div style="display: none;" id="walkthroughDiv">
+    <p>Deutsche Übersetzung für "<a href="#">大学</a>" im HanDeDict Open Source Wörterbuch chinesisch-deutsch</p>
+    <p>Chinesische Übersetzung für "<a href="#">Universität</a>" im HanDeDict Open Source Wörterbuch chinesisch-deutsch</p>
+  </div>
+</div>
+<div id="bittercookie">
+  This website relies on cookies for some of its functionality.
+  By using the site, you agree to its use of cookies.
+  <a id="swallowbitterpill" href="#">Got it</a>
+  <a id="cookierecipe" href="#">Learn more</a>
+</div>
+<!-- Includes for every page -->
+<script src="lib/jquery-2.1.4.min.js"></script>
+<script src="lib/jquery.tooltipster.min.js"></script>
+<script src="js-1.1/ui-en.js"></script>
+<script src="js-1.1/ui-de.js"></script>
+<script src="js-1.1/ui-jian.js"></script>
+<script src="js-1.1/ui-fan.js"></script>
+<script src="js-1.1/common.js" id="elmCommonJS"></script>
+<!-- Page-specific includes -->
+<script src="js-1.1/shortstraw.js"></script>
+<script src="js-1.1/recog.js"></script>
+<script src="js-1.1/strokeanim.js"></script>
+<script src="js-1.1/lookup.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+﻿<h2>什麼是HanDeDict?</h2>
+
+<p>HanDeDict是一種開源的，協作編輯而成的漢語-德語詞典,由Create Commons批准（<a href="http://creativecommons.org/licenses/by-sa/2.0/de/" target="_blank">CC BY-SA 2.0 DE</a>）它從作爲 CEDICT 漢英詞典的一種翻譯開始，2006年至2011年間在<a href="http://www.chinaboard.de/willkommen.html" target="_blank">Chinesisch-Deutsche Gesellschaft e.V. Hamburg</a>的支持下被積極地保持下來。2015 年 8 月，HanDeDict的網站下線;互聯網檔案館倒流機器上的<a href="https://web.archive.org/web/20150325174145/http:/www.handedict.de/chinesisch_deutsch.php?mode=about" target="_blank">最後一個快照</a>來自2015 年 8 月 1 日。包含有最新形式的整個詞典的文本文件可以<a href="https://github.com/zydeo/HanDeDict/" target="_blank">在Github上下載。</a>您正在查看的網站基於這個文件。</p>
+
+<h2>什麼是Zydeo?</h2>
+
+<p>在其原本的形式，<a href="https://zydeo.net/" target="_blank">Zydeo</a>是一種基於 <a href="http://cc-cedict.org/wiki/" target="_blank">CC CEDICT </a>的適合Windows的開放源碼的漢英詞典。我爲了自己開心而創建了它，作爲一個愛好項目，它讓我探索到了用戶界面的極簡辦法。偶爾，我會在<a href="https://blog.zydeo.net/" target="_blank">Zydeo博客</a>上發佈關於它的內容 。你可以在Github上找到<a href="https://github.com/zydeo/Zydeo" target="_blank">源代碼</a>。</p>
+
+<p>我並不考慮爲其自身的緣故而創建一個在線版本;已經有無數的網站建立在CEDICT上。但我很快就會發行一個類似於HanDeDict的項目: 一種將CEDICT譯成不同語言的翻譯，爲協同編輯開放。當我得知HanDeDict網站消失了時，我意識到我可以重新利用現有的工作發行這個網站，使HanDeDict可以再次在線使用。其結果便是HanDeDict @ Zydeo。</p>
+
+<h2>未來</h2>
+
+<p>在其目前最初的形式，本網站允許您搜索HanDeDict。我將在後面幾個月發佈小的改進。尤其是手寫識別組件 (基於由<a href="http://www.kiang.org/jordan/software/hanzilookup/" target="_blank">Zz85</a>編輯的有關Jordan Kiang的<a href="http://jabtunes.com/notation/chinesestroke.html" target="_blank">HanziLookup</a>的端口)仍然需要傾注更多的努力。
+</p>
+
+<p>最終該網站將包括一個在線編輯器，它允許每個人來改進翻譯并添加新的詞目。我希望能吸引到可以復興HanDeDict，并從2011年創作者的原始團隊離開的地方開始對其進行繼續擴大和改善的參與者們。</p>
+
+<h2>聯繫方式</h2>
+<p>
+電子郵件: zydeodict-[at]-gmail-[dot]-com<br /> Twitter: <a href="https://twitter.com/ZydeoDict" target="_blank">@ZydeoDict</a>
+</p> 

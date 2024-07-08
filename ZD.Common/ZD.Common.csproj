@@ -42,15 +42,18 @@
   <ItemGroup>
     <Compile Include="BinReader.cs" />
     <Compile Include="BinWriter.cs" />
+    <Compile Include="CedictAnnotation.cs" />
     <Compile Include="CedictEntry.cs" />
     <Compile Include="CedictTargetHighlight.cs" />
     <Compile Include="DiagnosticException.cs" />
     <Compile Include="ErrorLogger.cs" />
     <Compile Include="FontCoverageFull.cs" />
+    <Compile Include="HanziInfo.cs" />
     <Compile Include="HybridText.cs" />
     <Compile Include="CedictLookupResult.cs" />
     <Compile Include="ICedictEntryProvider.cs" />
     <Compile Include="IFontCoverage.cs" />
+    <Compile Include="IHeadwordInfo.cs" />
     <Compile Include="PinyinSyllable.cs" />
     <Compile Include="PinyinSyllable.DisplayString.cs" />
     <Compile Include="CedictSense.cs" />

@@ -200,6 +200,51 @@ namespace ZD.Common
                     this.hanziPinyinMap[i] = -1;
             }
         }
+
+        /// <summary>
+        /// Gets entry in the CEDICT format.
+        /// </summary>
+        /// <param name="head"></param>
+        /// <param name="trg"></param>
+        public void GetCedict(out string head, out string trg)
+        {
+            StringBuilder sbHead = new StringBuilder();
+            StringBuilder sbTrg = new StringBuilder();
+            sbHead.Append(ChTrad);
+            sbHead.Append(' ');
+            sbHead.Append(ChSimpl);
+            sbHead.Append(" [");
+            bool first = true;
+            foreach (PinyinSyllable syll in pinyin)
+            {
+                if (!first) sbHead.Append(' ');
+                else first = false;
+                sbHead.Append(syll.GetDisplayString(false));
+            }
+            sbHead.Append(']');
+            sbTrg.Append('/');
+            foreach (CedictSense sense in senses)
+            {
+                sbTrg.Append(sense.GetCedict());
+                sbTrg.Append('/');
+            }
+            head = sbHead.ToString();
+            trg = sbTrg.ToString();
+        }
+
+        /// <summary>
+        /// Stable hash of a headword string (simplified or traditional, whatever).
+        /// </summary>
+        public static int Hash(string headword)
+        {
+            int hash = 5381;
+            foreach (char c in headword)
+            {
+                int i = (int)c;
+                hash = ((hash << 5) + hash) + c;
+            }
+            return hash;
+        }
         
         /// <summary>
         /// Deserializes simplified and traditional headword, without reading *full* entry.

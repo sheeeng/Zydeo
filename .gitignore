@@ -35,3 +35,18 @@ _work_chdict_prepare/*
 # Bin folders: ignore altogether
 _bin/*
 _install/*
+_deploy/*
+_chdeploy/*
+_localization/*
+packages/*
+ZDO.Site/_data/*
+ZDO.CHSite/_data/*
+
+# But, from data, include sample config files
+!ZDO.Site/_data/Private.config
+
+# WebStorm project files
+*/.idea/workspace.xml
+*/.idea/tasks.xml
+*/.idea/dictionaries
+

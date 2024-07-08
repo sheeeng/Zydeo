@@ -1,0 +1,11 @@
+﻿<h1>HanDeDict @ Zydeo</h1>
+<img id="img-welcome" src="static/zydeo-owl.svg" alt="歡迎" />
+<p>
+    輸入德語單詞，拼音或漢字查詢詞典：
+</p><p>
+    拼音音節可以包括聲調符號，但不是必需的: <br /><i>zhongwen</i>和 <i>zhong1wen2</i>都可以。
+</p><p>
+    你可以用空格來把拼音音節分開，但不是必需的: <br /><i>zhong wen</i>和 <i>zhongwen</i>都可以。<i>xi an</i>和<i>xi'an</i>也是一樣。
+</p><p>
+    單擊畫筆圖標以進入手寫識別。
+</p> 

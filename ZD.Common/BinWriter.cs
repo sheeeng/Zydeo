@@ -8,12 +8,18 @@ namespace ZD.Common
 {
     public class BinWriter : IDisposable
     {
-        private FileStream stream;
+        private Stream stream;
         private BinaryWriter writer;
 
         public BinWriter(string fileName)
         {
             stream = new FileStream(fileName, FileMode.Create, FileAccess.ReadWrite);
+            writer = new BinaryWriter(stream);
+        }
+
+        public BinWriter(Stream stream)
+        {
+            this.stream = stream;
             writer = new BinaryWriter(stream);
         }
 
@@ -27,6 +33,11 @@ namespace ZD.Common
         {
             if (writer != null) writer.Dispose();
             if (stream != null) stream.Dispose();
+        }
+
+        public void MoveToEnd()
+        {
+            stream.Seek(0, SeekOrigin.End);
         }
 
         public void WriteChar(char c)
@@ -52,6 +63,11 @@ namespace ZD.Common
         public void WriteByte(byte b)
         {
             writer.Write(b);
+        }
+
+        public void WriteBytes(byte[] buf)
+        {
+            writer.Write(buf);
         }
 
         public void WriteString(string str)

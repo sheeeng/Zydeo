@@ -8,6 +8,7 @@ namespace ZD.Common
     /// <summary>
     /// One sense in an entry.
     /// </summary>
+    [System.Diagnostics.DebuggerDisplay("{GetPlainText()}")]
     public class CedictSense : IBinSerializable
     {
         /// <summary>
@@ -52,6 +53,53 @@ namespace ZD.Common
             Domain.Serialize(bw);
             Equiv.Serialize(bw);
             Note.Serialize(bw);
+        }
+
+        /// <summary>
+        /// Returns this sense, without the enclosing slashes, in CEDICT format.
+        /// </summary>
+        public string GetCedict()
+        {
+            StringBuilder sb = new StringBuilder();
+            string domainCedict = Domain.GetCedict();
+            if (!string.IsNullOrEmpty(domainCedict)) sb.Append(domainCedict);
+            string equivCedict = Equiv.GetCedict();
+            if (!string.IsNullOrEmpty(equivCedict))
+            {
+                if (sb.Length != 0) sb.Append(' ');
+                sb.Append(equivCedict);
+            }
+            string noteCedict = Note.GetCedict();
+            if (!string.IsNullOrEmpty(noteCedict))
+            {
+                if (sb.Length != 0) sb.Append(' ');
+                sb.Append(noteCedict);
+            }
+            sb.Replace('/', '\\');
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Gets sense in plain text.
+        /// </summary>
+        public string GetPlainText()
+        {
+            StringBuilder sb = new StringBuilder();
+            string domainPlain = Domain.GetPlainText();
+            if (!string.IsNullOrEmpty(domainPlain)) sb.Append(domainPlain);
+            string equivPlain = Equiv.GetPlainText();
+            if (!string.IsNullOrEmpty(equivPlain))
+            {
+                if (sb.Length != 0) sb.Append(' ');
+                sb.Append(equivPlain);
+            }
+            string notePlain = Note.GetPlainText();
+            if (!string.IsNullOrEmpty(notePlain))
+            {
+                if (sb.Length != 0) sb.Append(' ');
+                sb.Append(notePlain);
+            }
+            return sb.ToString();
         }
     }
 }
